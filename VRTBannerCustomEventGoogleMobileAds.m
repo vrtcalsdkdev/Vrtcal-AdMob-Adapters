@@ -47,7 +47,7 @@
 
 /// Tells the delegate that an ad request failed. The failure is normally due to network
 /// connectivity or ad availablility (i.e., no fill).
-- (void)adView:(nonnull GADBannerView *)bannerView didFailToReceiveAdWithError:(nonnull GADRequestError *)error {
+- (void)adView:(nonnull GADBannerView *)bannerView didFailToReceiveAdWithError:(nonnull NSError *)error {
     VRTLogInfo(@"error = %@", error);
     [self.customEventLoadDelegate customEventFailedToLoadWithError:error];
 }

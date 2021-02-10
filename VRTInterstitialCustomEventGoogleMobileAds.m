@@ -12,8 +12,8 @@
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
 //Google Mobile Ads Interstitial Adapter, Vrtcal as Primary
-@interface VRTInterstitialCustomEventGoogleMobileAds() <GADInterstitialDelegate>
-@property GADInterstitial *gadInterstitial;
+@interface VRTInterstitialCustomEventGoogleMobileAds() <GADFullScreenContentDelegate>
+@property GADInterstitialAd *gadInterstitial;
 @end
 
 
@@ -21,9 +21,20 @@
 
 - (void) loadInterstitialAd {
     NSString *adUnitId = [self.customEventConfig.thirdPartyCustomEventData objectForKey:@"adUnitId"];
-    self.gadInterstitial = [[GADInterstitial alloc] initWithAdUnitID:adUnitId];
-    self.gadInterstitial.delegate = self;
-    [self.gadInterstitial loadRequest:[GADRequest request]];
+    
+    [GADInterstitialAd loadWithAdUnitID:adUnitId request:[GADRequest new] completionHandler:^(GADInterstitialAd * _Nullable interstitialAd, NSError * _Nullable error) {
+        
+        if (interstitialAd == nil || error != nil) {
+            [self.customEventLoadDelegate customEventFailedToLoadWithError:error];
+            return;
+        }
+        
+        
+        self.gadInterstitial = interstitialAd;
+        self.gadInterstitial.fullScreenContentDelegate = self;
+        
+        [self.customEventLoadDelegate customEventLoaded];
+    }];
 }
 
 - (void) showInterstitialAd {
@@ -31,19 +42,6 @@
     [self.gadInterstitial presentFromRootViewController:vc];
 }
 
-#pragma mark - GADInterstitialDelegate
-
-/// Called when an interstitial ad request succeeded. Show it at the next transition point in your
-/// application such as when transitioning between view controllers.
-- (void)interstitialDidReceiveAd:(GADInterstitial *)ad {
-    [self.customEventLoadDelegate customEventLoaded];
-}
-
-/// Called when an interstitial ad request completed without an interstitial to
-/// show. This is common since interstitials are shown sparingly to users.
-- (void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error {
-    [self.customEventLoadDelegate customEventFailedToLoadWithError:error];
-}
 
 #pragma mark Display-Time Lifecycle Notifications
 
@@ -51,22 +49,22 @@
 /// animate onto the screen. Use this opportunity to stop animations and save the state of your
 /// application in case the user leaves while the interstitial is on screen (e.g. to visit the App
 /// Store from a link on the interstitial).
-- (void)interstitialWillPresentScreen:(GADInterstitial *)ad {
+- (void)interstitialWillPresentScreen:(GADInterstitialAd *)ad {
     [self.customEventShowDelegate customEventShown];
 }
 
 /// Called when |ad| fails to present.
-- (void)interstitialDidFailToPresentScreen:(GADInterstitial *)ad {
+- (void)interstitialDidFailToPresentScreen:(GADInterstitialAd *)ad {
     
 }
 
 /// Called before the interstitial is to be animated off the screen.
-- (void)interstitialWillDismissScreen:(GADInterstitial *)ad {
+- (void)interstitialWillDismissScreen:(GADInterstitialAd *)ad {
     [self.customEventShowDelegate customEventWillDismissModal:VRTModalTypeInterstitial];
 }
 
 /// Called just after dismissing an interstitial and it has animated off the screen.
-- (void)interstitialDidDismissScreen:(GADInterstitial *)ad {
+- (void)interstitialDidDismissScreen:(GADInterstitialAd *)ad {
     [self.customEventShowDelegate customEventDidDismissModal:VRTModalTypeInterstitial];
 }
 
@@ -74,7 +72,7 @@
 /// ad that will launch another application (such as the App Store). The normal
 /// UIApplicationDelegate methods, like applicationDidEnterBackground:, will be called immediately
 /// before this.
-- (void)interstitialWillLeaveApplication:(GADInterstitial *)ad {
+- (void)interstitialWillLeaveApplication:(GADInterstitialAd *)ad {
     [self.customEventShowDelegate customEventWillLeaveApplication];
 }
 

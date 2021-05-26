@@ -17,6 +17,10 @@ Pod::Spec.new do |s|
 
     s.dependency 'Google-Mobile-Ads-SDK'
     s.dependency 'VrtcalSDK'
+    s.pod_target_xcconfig = {
+        "VALID_ARCHS[sdk=iphoneos*]" => "arm64 armv7",
+        "VALID_ARCHS[sdk=iphonesimulator*]" => "x86_64 arm64"        
+    }
 
     s.static_framework = true
 end

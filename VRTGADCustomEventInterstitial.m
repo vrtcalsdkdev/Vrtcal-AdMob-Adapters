@@ -66,7 +66,7 @@
 }
 
 - (void)vrtInterstitialAdDidShow:(nonnull VRTInterstitial *)vrtInterstitial {
-    [self.delegate customEventInterstitialWillPresent:self];
+    //Surprisingly, Google Mobile Ads doesn't have an analog to this event.
 }
 
 - (void)vrtInterstitialAdFailedToShow:(nonnull VRTInterstitial *)vrtInterstitial error:(nonnull NSError *)error {
@@ -78,7 +78,8 @@
 }
 
 - (void)vrtInterstitialAdWillLeaveApplication:(nonnull VRTInterstitial *)vrtInterstitial {
-    [self.delegate customEventInterstitialWillLeaveApplication:self];
+    //Google Mobile Ads supports this event but it is deprecated
+    //[self.delegate customEventInterstitialWillLeaveApplication:self];
 }
 
 - (void)vrtInterstitialAdWillDismiss:(nonnull VRTInterstitial *)vrtInterstitial {

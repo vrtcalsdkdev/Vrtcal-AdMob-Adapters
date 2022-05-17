@@ -71,7 +71,8 @@
 }
 
 - (void)vrtBannerAdWillLeaveApplication:(nonnull VRTBanner *)vrtBanner {
-    [self.delegate customEventBannerWillLeaveApplication:self];
+    //Google Mobile Ads supports this event but it is deprecated
+    //[self.delegate customEventBannerWillLeaveApplication:self];
 }
 
 -(UIViewController*)vrtViewControllerForModalPresentation{

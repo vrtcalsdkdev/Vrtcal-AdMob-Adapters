@@ -10,10 +10,11 @@ Pod::Spec.new do |s|
     s.author       = { "Scott McCoy" => "scott.mccoy@vrtcal.com" }
     
     s.source       = { :git => "https://github.com/vrtcalsdkdev/Vrtcal-AdMob-Adapters.git", :tag => "#{s.version}" }
-    s.source_files = "*.{h,m}"
+    s.source_files = "*.swift"
+    s.swift_version = '5.0'
 
     s.platform = :ios
-    s.ios.deployment_target  = '10.0'
+    s.ios.deployment_target  = '11.0'
 
     s.dependency 'Google-Mobile-Ads-SDK'
     s.dependency 'VrtcalSDK'

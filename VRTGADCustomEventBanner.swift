@@ -1,4 +1,4 @@
-//  Converted to Swift 5.8.1 by Swiftify v5.8.26605 - https://swiftify.com/
+
 //Header
 import GoogleMobileAds
 import VrtcalSDK

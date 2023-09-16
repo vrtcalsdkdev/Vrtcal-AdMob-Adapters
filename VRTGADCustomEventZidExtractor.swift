@@ -8,6 +8,8 @@
 
 import VrtcalSDK
 
+// Google stores their configuration in a JSON string
+// This fetches the zid field
 enum VRTGADCustomEventZidExtractor {
     
     static func extract(

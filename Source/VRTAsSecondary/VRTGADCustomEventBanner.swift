@@ -1,9 +1,8 @@
+// Google Mobile Ads Banner Adapter, Vrtcal as Secondary
 
-//Header
 import GoogleMobileAds
 import VrtcalSDK
 
-// Google Mobile Ads Banner Adapter, Vrtcal as Secondary
 class VRTGADCustomEventBanner: NSObject, GADCustomEventBanner {
     private var vrtBanner: VRTBanner?
     

@@ -1,10 +1,4 @@
-//
-//  ZIDExtractor.swift
-//  VrtcalSDKInternalTestApp
-//
-//  Created by Scott McCoy on 8/29/23.
-//  Copyright © 2023 VRTCAL. All rights reserved.
-//
+// Google Mobile Ads Adapter, Vrtcal as Secondary
 
 import VrtcalSDK
 

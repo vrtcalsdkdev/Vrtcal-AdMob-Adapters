@@ -1,22 +1,8 @@
-
-//
-//  VRTInterstitialCustomEventGoogleMobileAds.swift
-//
-//  Created by Scott McCoy on 5/9/19.
-//  Copyright © 2019 VRTCAL. All rights reserved.
-//
-
-//
-//  VRTInterstitialCustomEventGoogleMobileAds.swift
-//
-//  Created by Scott McCoy on 5/9/19.
-//  Copyright © 2019 VRTCAL. All rights reserved.
-//
+// Google Mobile Ads Interstitial Adapter, Vrtcal as Primary
 
 import VrtcalSDK
 import GoogleMobileAds
 
-// Google Mobile Ads Interstitial Adapter, Vrtcal as Primary
 class VRTInterstitialCustomEventGoogleMobileAds: VRTAbstractInterstitialCustomEvent {
     private var gadInterstitial: GADInterstitialAd?
     private var gadInterstitialAdDelegatePassthrough: GADInterstitialAdDelegatePassthrough?

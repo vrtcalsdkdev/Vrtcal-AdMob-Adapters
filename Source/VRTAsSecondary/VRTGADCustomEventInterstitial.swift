@@ -1,7 +1,8 @@
+// Google Mobile Ads Interstitial Adapter, Vrtcal as Secondary
+
 import GoogleMobileAds
 import VrtcalSDK
 
-// Google Mobile Ads Interstitial Adapter, Vrtcal as Secondary
 // Must be NSObject for GADCustomEventInterstitial
 class VRTGADCustomEventInterstitial: NSObject, GADCustomEventInterstitial {
     

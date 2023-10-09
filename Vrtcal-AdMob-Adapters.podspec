@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
     s.author       = { "Scott McCoy" => "scott.mccoy@vrtcal.com" }
     
     s.source       = { :git => "https://github.com/vrtcalsdkdev/Vrtcal-AdMob-Adapters.git", :tag => "#{s.version}" }
-    s.source_files = "*.swift"
+    s.source_files = "Source/**/*.swift"
     s.swift_version = '5.0'
 
     s.platform = :ios

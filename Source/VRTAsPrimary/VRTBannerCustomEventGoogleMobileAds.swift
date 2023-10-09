@@ -1,15 +1,7 @@
-//
-//  VRTBannerCustomEventGoogleMobileAds.swift
-//
-//  Created by Scott McCoy on 5/9/19.
-//  Copyright © 2019 VRTCAL. All rights reserved.
-//
+// Google Mobile Ads Banner Adapter, Vrtcal as Primary
 
-//Google Mobile Ads Banner Adapter, Vrtcal as Primary
 import GoogleMobileAds
 import VrtcalSDK
-
-//Google Mobile Ads Banner Adapter, Vrtcal as Primary
 
 class VRTBannerCustomEventGoogleMobileAds: VRTAbstractBannerCustomEvent {
     private var gadBannerView: GADBannerView?

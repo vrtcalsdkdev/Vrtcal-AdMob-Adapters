@@ -50,6 +50,7 @@ class VRTInterstitialCustomEventGoogleMobileAds: VRTAbstractInterstitialCustomEv
             gadInterstitial?.fullScreenContentDelegate = gadInterstitialAdDelegatePassthrough
             
             // Let our delegate know the ad loaded
+            VRTLogInfo("GMA Interstitial Loaded")
             customEventLoadDelegate?.customEventLoaded()
         }
     }

@@ -71,7 +71,6 @@ class VRTInterstitialCustomEventGoogleMobileAds: VRTAbstractInterstitialCustomEv
         self.gadInterstitialAdDelegatePassthrough?.customEventShowDelegate = customEventShowDelegate
         
         gadInterstitial?.present(fromRootViewController: vc)
-        customEventShowDelegate?.customEventWillPresentModal(.interstitial)
     }
 }
 

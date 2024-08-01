@@ -11,15 +11,11 @@ class VRTGADMediationBannerAd: NSObject, GADMediationBannerAd {
         return vrtBanner ?? UIView()
     }
     
-    /// The Sample Ad Network banner ad.
     var vrtBanner: VRTBanner?
-
-    /// The ad event delegate to forward ad rendering events to the Google Mobile Ads SDK.
     var delegate: GADMediationBannerAdEventDelegate?
-
-    /// Completion handler called after ad load
     var completionHandler: GADMediationBannerLoadCompletionHandler?
-
+    weak var viewControllerForModalPresentation: UIViewController?
+    
     override init() {
         super.init()
     }
@@ -47,6 +43,7 @@ class VRTGADMediationBannerAd: NSObject, GADMediationBannerAd {
         )
         
         // Load
+        self.viewControllerForModalPresentation = adConfiguration.topViewController
         vrtBanner?.adDelegate = self
         vrtBanner?.loadAd(zoneId)
     }
@@ -67,7 +64,7 @@ extension VRTGADMediationBannerAd: VRTBannerDelegate {
         error: any Error
     ) {
         VRTLogInfo()
-        _ = completionHandler?(self, nil)
+        _ = completionHandler?(self, error)
     }
     
     func vrtBannerAdClicked(
@@ -132,6 +129,6 @@ extension VRTGADMediationBannerAd: VRTBannerDelegate {
     
     func vrtViewControllerForModalPresentation() -> UIViewController? {
         VRTLogInfo()
-        return nil
+        return viewControllerForModalPresentation
     }
 }

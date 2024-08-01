@@ -43,6 +43,7 @@ class VRTGADMediationInterstitialAd: NSObject, GADMediationInterstitialAd {
     func present(from viewController: UIViewController) {
         VRTLogInfo()
         self.viewControllerForModalPresentation = viewController
+        vrtInterstitial?.showAd()
     }
 }
 

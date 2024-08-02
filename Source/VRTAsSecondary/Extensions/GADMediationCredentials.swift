@@ -29,11 +29,22 @@ extension GADMediationCredentials {
             )
         }
         
-        guard let anyValue = stringAnyDict[intSetting] else {
+        guard let caseInsensitiveKey = stringAnyDict.keys.first(where: {
+            $0.lowercased() == intSetting
+        }) else {
             return .failure(
                 VRTError(
                     vrtErrorCode: .customEvent,
-                    message: "No appid field: \(stringAnyDict)"
+                    message: "No matching key for \(intSetting): \(stringAnyDict)"
+                )
+            )
+        }
+
+        guard let anyValue = stringAnyDict[caseInsensitiveKey] else {
+            return .failure(
+                VRTError(
+                    vrtErrorCode: .customEvent,
+                    message: "caseInsensitiveKey \(caseInsensitiveKey) not found: \(stringAnyDict)"
                 )
             )
         }

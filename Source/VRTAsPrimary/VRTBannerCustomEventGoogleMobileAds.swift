@@ -10,6 +10,21 @@ class VRTBannerCustomEventGoogleMobileAds: VRTAbstractBannerCustomEvent {
     override func loadBannerAd() {
         VRTLogInfo()
         
+        VRTAsPrimaryManager.singleton.initializeThirdParty() { result in
+            
+            switch result {
+                case .success():
+                self.finishLoadBannerAd()
+                
+                case .failure(let vrtError):
+                self.customEventLoadDelegate?.customEventFailedToLoad(vrtError: vrtError)
+            }
+        }
+    }
+    
+    func finishLoadBannerAd() {
+        VRTLogInfo()
+        
         // Get AdUnitId
         guard let adUnitId = customEventConfig.thirdPartyCustomEventData["adUnitId"] as? String else {
             let vrtError = VRTError(

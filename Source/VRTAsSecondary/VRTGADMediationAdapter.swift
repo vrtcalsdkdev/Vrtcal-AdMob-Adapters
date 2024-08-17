@@ -75,7 +75,6 @@ public final class VRTGADMediationAdapter: NSObject, GADMediationAdapter {
     ) {
         VRTLogInfo("adConfiguration: \(adConfiguration)")
 
-        // Load a Banner
         self.vrtGadMediationBannerAd = VRTGADMediationBannerAd()
         self.vrtGadMediationBannerAd?.loadBanner(
             for: adConfiguration,
@@ -90,7 +89,6 @@ public final class VRTGADMediationAdapter: NSObject, GADMediationAdapter {
     ) {
         VRTLogInfo("adConfiguration: \(adConfiguration)")
 
-        // Load a Banner
         self.vrtGadMediationInterstitialAd = VRTGADMediationInterstitialAd()
         self.vrtGadMediationInterstitialAd?.loadInterstitial(
             for: adConfiguration,

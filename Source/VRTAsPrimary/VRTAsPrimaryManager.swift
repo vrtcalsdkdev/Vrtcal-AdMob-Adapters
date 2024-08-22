@@ -9,19 +9,18 @@ class VRTAsPrimaryManager {
     private var shouldInit = true
     
     func initializeThirdParty(
-        completionHandler: @escaping (Result<Void, VRTError>) -> ()
+        completionHandler: @escaping () -> ()
     ) {
 
         guard shouldInit else {
-            completionHandler(.success())
+            completionHandler()
             return
         }
 
         shouldInit = false
         GADMobileAds.sharedInstance().disableMediationInitialization()
         GADMobileAds.sharedInstance().start { _ in
-            completionHandler(.success())
+            completionHandler()
         }
     }
-    
 }

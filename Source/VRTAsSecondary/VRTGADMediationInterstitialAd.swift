@@ -25,8 +25,7 @@ class VRTGADMediationInterstitialAd: NSObject, GADMediationInterstitialAd {
         // Get the Zone ID
         let result = adConfiguration.credentials.get(intSetting: "zid")
         guard case let .success(zoneId) = result else {
-            let vrtError = result.getError()
-            _ = completionHandler(nil, vrtError)
+            _ = completionHandler(nil, result.error)
             return
         }
         

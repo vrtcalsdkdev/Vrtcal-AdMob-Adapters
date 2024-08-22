@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "Vrtcal-AdMob-Adapters"
-    s.version      = "1.0.8"
+    s.version      = "1.0.9"
     s.summary      = "Allows mediation with Vrtcal as either the primary or secondary SDK"
     s.homepage     = "http://vrtcal.com"
     s.license = { :type => 'Copyright', :text => <<-LICENSE
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
     s.swift_version = '5.0'
 
     s.platform = :ios
-    s.ios.deployment_target  = '11.0'
+    s.ios.deployment_target  = '12.0'
 
     s.dependency 'Google-Mobile-Ads-SDK'
     s.dependency 'VrtcalSDK'

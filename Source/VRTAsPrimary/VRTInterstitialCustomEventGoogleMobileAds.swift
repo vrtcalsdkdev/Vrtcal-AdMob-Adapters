@@ -10,15 +10,8 @@ class VRTInterstitialCustomEventGoogleMobileAds: VRTAbstractInterstitialCustomEv
     override func loadInterstitialAd() {
         VRTLogInfo()
         
-        VRTAsPrimaryManager.singleton.initializeThirdParty() { result in
-            
-            switch result {
-                case .success():
-                self.finishLoadInterstitialAd()
-                
-                case .failure(let vrtError):
-                self.customEventLoadDelegate?.customEventFailedToLoad(vrtError: vrtError)
-            }
+        VRTAsPrimaryManager.singleton.initializeThirdParty() {
+            self.finishLoadInterstitialAd()
         }
     }
     
